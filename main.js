@@ -17,7 +17,7 @@ function showNext() {
   var imageActive = $('.images img.active');
   var imageNext = imageActive.next('img');
 
-  var circleActive = $('nav i.active');
+  var circleActive = $('.nav i.active');
   var circleNext = circleActive.next('i');
 
 
@@ -40,25 +40,31 @@ function showNext() {
 
 
 
-
-
-
-
-
 }
 
 function showPrev() {
   var imageActive = $('.images img.active');
-  var imagePrev = $('.images img.active').prev('img');
-  var imageLast = $('.images img:last-child');
-  var imageFirst = $('.images img:first-child');
+  var imagePrev = imageActive.prev('img');
 
-  if (imageFirst.hasClass('active')) {
-    imageLast.addClass('active')
+  var circleActive = $('.nav i.active');
+  var circlePrev = circleActive.prev('i');
+
+
+  if (imageActive.hasClass('first')) {
+
+    imageActive.removeClass('active');
+    $('.images img.last').addClass('active');
+
+    circleActive.removeClass('active');
+    $('.nav i.last').addClass('active');
+
   }
 
-  imageActive.removeClass('active');
-  imagePrev.addClass('active');
+    imageActive.removeClass('active');
+    imagePrev.addClass('active');
+
+    circleActive.removeClass('active');
+    circlePrev.addClass('active');
 
 
 }
