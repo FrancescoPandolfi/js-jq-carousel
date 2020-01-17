@@ -1,5 +1,3 @@
-
-
 $( document ).ready(function() {
   // Next arrow actions
   $('.next').click(function () {
@@ -10,7 +8,32 @@ $( document ).ready(function() {
     showPrev();
   });
 
+
+    $(document).keydown(
+      function () {
+        if (event.keyCode == 39) {
+          showNext();
+        }
+      }
+    );
+
+    $(document).keydown(
+      function () {
+        if (event.keyCode == 37) {
+          showPrev();
+        }
+      }
+    );
+
+
+
+
 });
+
+
+
+
+
 
 function showNext() {
 
@@ -37,9 +60,6 @@ function showNext() {
     circleActive.removeClass('active');
     circleNext.addClass('active');
   }
-
-
-
 }
 
 function showPrev() {
@@ -49,7 +69,6 @@ function showPrev() {
   var circleActive = $('.nav i.active');
   var circlePrev = circleActive.prev('i');
 
-
   if (imageActive.hasClass('first')) {
 
     imageActive.removeClass('active');
@@ -58,13 +77,12 @@ function showPrev() {
     circleActive.removeClass('active');
     $('.nav i.last').addClass('active');
 
-  }
+  } else {
 
     imageActive.removeClass('active');
     imagePrev.addClass('active');
 
     circleActive.removeClass('active');
     circlePrev.addClass('active');
-
-
+  }
 }
