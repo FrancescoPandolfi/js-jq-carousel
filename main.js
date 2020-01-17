@@ -2,25 +2,49 @@
 
 $( document ).ready(function() {
   // Next arrow actions
-  $('.next').click(function () { showNext(); });
+  $('.next').click(function () {
+    showNext();
+  });
   // Prev arrow actions
-  $('.prev').click(function () { showPrev(); });
+  $('.prev').click(function () {
+    showPrev();
+  });
 
 });
 
 function showNext() {
+
   var imageActive = $('.images img.active');
-  var imageNext = $('.images img.active').next('img');
-  var imageLast = $('.images img:last-child');
-  var imageFirst = $('.images img:first-child');
+  var imageNext = imageActive.next('img');
+
+  var circleActive = $('nav i.active');
+  var circleNext = circleActive.next('i');
 
 
-  imageActive.removeClass('active');
-  imageNext.addClass('active');
+  if (imageActive.hasClass('last')) {
 
-  if (imageLast.hasClass('active')) {
-    imageFirst.addClass('active')
+    imageActive.removeClass('active');
+    $('.images img.first').addClass('active');
+
+    circleActive.removeClass('active');
+    $('.nav i.first').addClass('active');
+
+  } else {
+
+    imageActive.removeClass('active');
+    imageNext.addClass('active');
+
+    circleActive.removeClass('active');
+    circleNext.addClass('active');
   }
+
+
+
+
+
+
+
+
 }
 
 function showPrev() {
@@ -29,10 +53,12 @@ function showPrev() {
   var imageLast = $('.images img:last-child');
   var imageFirst = $('.images img:first-child');
 
-  imageActive.removeClass('active');
-  imagePrev.addClass('active');
-
   if (imageFirst.hasClass('active')) {
     imageLast.addClass('active')
   }
+
+  imageActive.removeClass('active');
+  imagePrev.addClass('active');
+
+
 }
